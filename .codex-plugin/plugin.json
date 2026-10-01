@@ -1,0 +1,37 @@
+{
+  "name": "outcome-driven-recursive-decomposition",
+  "version": "1.0.0",
+  "description": "Turn uncertain, dependent goals into verified outcomes through recursive decomposition, discriminating experiments, evidence and adaptive delivery.",
+  "author": {
+    "name": "trukhinyuri",
+    "url": "https://github.com/trukhinyuri"
+  },
+  "repository": "https://github.com/trukhinyuri/outcome-driven-recursive-decomposition",
+  "homepage": "https://github.com/trukhinyuri/outcome-driven-recursive-decomposition",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "outcomes",
+    "recursive-decomposition",
+    "systems-engineering",
+    "experiments",
+    "evidence"
+  ],
+  "interface": {
+    "displayName": "Recursive Outcome Delivery",
+    "shortDescription": "Resolve uncertainty and deliver verified outcomes",
+    "longDescription": "Adaptive outcome decomposition for complex engineering, research and delivery. Plan only as deeply as useful, test decisive unknowns, integrate results, preserve evidence, and replan without losing the original goal.",
+    "developerName": "trukhinyuri",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/trukhinyuri/outcome-driven-recursive-decomposition",
+    "defaultPrompt": [
+      "Use $outcome-decomposition to deliver this goal through verified results and adaptive experiments."
+    ],
+    "brandColor": "#2457D6"
+  },
+  "skills": "./skills/"
+}

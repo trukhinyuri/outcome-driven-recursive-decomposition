@@ -1,0 +1,6 @@
+interface:
+  display_name: "Recursive Outcome Delivery"
+  short_description: "Decompose uncertainty; deliver verified outcomes"
+  default_prompt: "Use $outcome-decomposition to deliver my goal through verified outcomes and adaptive experiments."
+policy:
+  allow_implicit_invocation: true

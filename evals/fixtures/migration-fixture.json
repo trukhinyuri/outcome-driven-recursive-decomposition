@@ -1,0 +1,10 @@
+{
+  "synthetic_test_only": true,
+  "goal": "Customer records exist in the destination and serving reads are stable",
+  "constraints": ["No cutover authorization", "Read-only QA: no service mutations"],
+  "requirements": ["Destination ID and payload match source", "Serving-read acceptance passes in intended deployment"],
+  "source": {"deployment": "source-test", "tenant": "tenant-42", "records": [{"id": "c1", "balance": 7}, {"id": "c2", "balance": 9}]},
+  "destination_readback": {"deployment": "dest-test", "tenant": "tenant-42", "records": []},
+  "prior_notes": {"export_exit": 0, "import_exit": 0, "observed_at": "2026-09-24"},
+  "serving_read_verification": null
+}

@@ -1,0 +1,7 @@
+{
+  "synthetic_test_only": true,
+  "mission": "Deliver a prototype that meets measured throughput and safety criteria",
+  "options": {"A": {"cost": 1, "feasibility_unknown": true}, "B": {"cost": 5, "feasibility_unknown": true}},
+  "constraints": ["Plan only", "One experiment total including setup validation and retries", "No services modified"],
+  "acceptance": ["Sustained 100 operations per second in defined fixture", "No invalid outputs"]
+}
