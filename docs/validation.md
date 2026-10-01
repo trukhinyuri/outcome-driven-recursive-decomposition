@@ -1,6 +1,6 @@
 # Validation record
 
-Verified on 2026-10-01 (Europe/Amsterdam). The tested host was Codex Desktop/app-server and CLI 0.159.2, with Python 3.14.7 on macOS. This is a scoped validation record, not a universal benchmark or world-best claim.
+Verified on 2026-10-01 (Europe/Amsterdam). The tested host was Codex Desktop/app-server and CLI 0.159.2, with Python 3.14.7 on macOS. The table below records the initial 1.0.0 validation; the 1.0.1 routing check is recorded separately. This is a scoped validation record, not a universal benchmark or world-best claim.
 
 | Layer | Actual check | Result and scope |
 |---|---|---|
@@ -23,6 +23,18 @@ Final state engine SHA-256:
 ```
 
 The tests caught and corrected two integration problems: old parent evidence could resurrect after a child change, and automatic evidence revisions could drop a blocked/rejected ancestor's control. Fresh integration revisions and separate persistent control records now prevent those observed failures.
+
+## 1.0.1 planning and approval routing
+
+The installed 1.0.1 skill was tested through stock app-server in an ephemeral conversation with two successive turns, explicitly selecting supported `gpt-6.1-sol` / `medium`. A standing personal routing rule was also added to the author's global Codex `AGENTS.md`; this is a local preference, not an automatic modification made by the plugin package on other hosts.
+
+1. A Russian plan-only request described a dependent local JSON-to-CSV pipeline without naming the skill. The trace read the installed 1.0.1 `SKILL.md`, presented outcomes and acceptance checks, and left every fixture file unchanged.
+2. The same conversation then received only `План подтверждаю.`. It implemented the accepted pipeline, generated a CSV and ran separate source/output readback without requesting the same approval again. An independent CSV parse confirmed IDs `c1,c2,c3`, labels `Alpha,Beta,Gamma`, three records and a value sum of six. The original source SHA-256 was unchanged. All implementation artifacts stayed in the disposable local test directory; no external migration was performed.
+3. A fresh unrelated translation-only conversation produced only the requested translation and no commands or decomposition skill read.
+
+An independent semantic reviewer also exercised plan-only, full approval, partial approval and direct implementation requests and found no material contradiction. Partial approval was reviewed semantically, not tested against a live deployment. The optional state engine was unchanged from 1.0.0; its recorded 23 unit tests and nine independent probes are not represented as a new behavioral routing test.
+
+Native forced discovery confirmed the plugin installed and enabled at local version 1.0.1, and the namespaced skill enabled. The reviewed routing files matched the installed cache. Planning/approval test instructions are in [live-smoke.md](../evals/live-smoke.md). These observations do not guarantee deterministic selection on every future prompt, and existing turns still require current instructions or refreshed discovery.
 
 ## Reproduce and assess limits
 

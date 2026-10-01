@@ -1,7 +1,7 @@
 {
   "name": "outcome-driven-recursive-decomposition",
-  "version": "1.0.0",
-  "description": "Turn uncertain, dependent goals into verified outcomes through recursive decomposition, discriminating experiments, evidence and adaptive delivery.",
+  "version": "1.0.1",
+  "description": "Plan complex goals and deliver approved plans through recursive outcome decomposition, discriminating experiments and verified integration.",
   "author": {
     "name": "trukhinyuri",
     "url": "https://github.com/trukhinyuri"
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Recursive Outcome Delivery",
     "shortDescription": "Resolve uncertainty and deliver verified outcomes",
-    "longDescription": "Adaptive outcome decomposition for complex engineering, research and delivery. Plan only as deeply as useful, test decisive unknowns, integrate results, preserve evidence, and replan without losing the original goal.",
+    "longDescription": "Plan complex tasks through necessary outcomes and decisive experiments. After human approval, implement, integrate, verify and replan without losing the original goal.",
     "developerName": "trukhinyuri",
     "category": "Productivity",
     "capabilities": [
@@ -29,7 +29,7 @@
     ],
     "websiteURL": "https://github.com/trukhinyuri/outcome-driven-recursive-decomposition",
     "defaultPrompt": [
-      "Use $outcome-decomposition to deliver this goal through verified results and adaptive experiments."
+      "Use $outcome-decomposition to plan this complex task and implement the approved plan through verified results."
     ],
     "brandColor": "#2457D6"
   },

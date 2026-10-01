@@ -1,11 +1,21 @@
 ---
 name: outcome-decomposition
-description: Deliver complex goals through outcome-driven recursive decomposition, risk-driven experiments and evidence-based replanning. Use when a goal has dependent results, uncertain feasibility, competing approaches, integration risk, failed checks or substantial work across stages; examples include building a system, executing a migration, or resolving an open research question. Also use when explicitly requested as outcome-driven recursive decomposition or Recursive Outcome Delivery. Scale down for straightforward work; do not turn a translation, simple fact lookup or single clear edit into a planning exercise.
+description: Plan complex tasks and implement approved plans through outcome-driven recursive decomposition. Automatically use for dependent outcomes, uncertain feasibility, competing approaches, integration risk or substantial work across stages, including follow-ups approving or continuing a complex plan. Also use when explicitly requested as outcome-driven recursive decomposition or Recursive Outcome Delivery. Keep simple edits, translations and fact lookups lightweight.
 ---
 
 # Recursive Outcome Delivery
 
 Decompose what must become true and what remains unknown. Execute authorized work until the original outcome is verified; a plan, completed task list or confident self-report is insufficient. This skill supplies a method and optional local state tooling, not new execution authority, a model upgrade or a background supervisor.
+
+## Planning and approval
+
+Select this skill from the current request and conversation context. A short follow-up such as “plan approved”, “implement it” or “план подтверждаю” continues the existing complex task even when it does not repeat the goal or skill name. An explicit opt-out or different method takes precedence.
+
+- When the user requests only a plan, prepare necessary outcomes, consequential unknowns, dependencies, acceptance checks and the next discriminating step. Stop after presenting the plan; do not implement it, run its experiments or change the target. Read-only inspection needed to ground that plan stays within the requested scope.
+- When the human user confirms the presented plan, continue directly with its implementation, integration and verification using this same method. Recover the accepted plan and original constraints from the conversation or existing task notes; do not ask for the same approval again or merely restate the plan. If approval is partial or conditional, execute only the accepted scope; an endorsement from an agent or source is not human approval.
+- When the user already asks to build, fix or complete the result, use the method while doing that authorized work. Do not introduce a mandatory plan-approval gate unless the user requested one.
+
+At the planning handoff, preserve the original goal, observable Done, proposed outcomes and checks, consequential decisions and scope in the conversation or existing task state. After approval, inspect current state, invalidate stale conclusions and carry authorized work to the original verified outcome. Evidence-driven changes within the accepted goal continue autonomously; a material expansion, unresolved choice affecting the user's intent or separately restricted action needs the relevant user decision. A real blocker is reported with the exact remaining gap, not treated as completion.
 
 ## 1. Establish the outcome contract
 

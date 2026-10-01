@@ -31,7 +31,11 @@ Explicit:
 Use $outcome-decomposition to migrate this system and prove the result in the destination.
 ```
 
-The host may display the namespaced name `outcome-driven-recursive-decomposition:outcome-decomposition`. The skill is eligible for automatic selection for complex dependent work, uncertain feasibility, alternative designs, integration risk and replanning. Clear one-step edits, translations and simple lookups should stay lightweight. Automatic eligibility is enabled with `allow_implicit_invocation: true`; selection remains a host/model decision.
+The host may display the namespaced name `outcome-driven-recursive-decomposition:outcome-decomposition`. The skill is eligible for automatic selection when planning complex tasks and when implementing or continuing their approved plans. It covers dependent outcomes, uncertain feasibility, alternative designs, integration risk and replanning. Clear one-step edits, translations and simple lookups should stay lightweight. Automatic eligibility is enabled with `allow_implicit_invocation: true`; selection remains a host/model decision.
+
+If you ask only for a plan, the agent presents outcomes, dependencies and acceptance checks and stops before implementation. A subsequent human confirmation such as “plan approved, implement it” or “план подтверждаю” continues that task directly through implementation, integration and verification without requiring the skill name or a second approval. Partial approval authorizes only its accepted scope. A direct request to build or fix already authorizes work in its stated scope; the method does not impose an extra planning gate.
+
+For a standing personal preference, a short rule in your global Codex `AGENTS.md` can explicitly select this skill for those complex-task stages; see [Codex custom instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md). This supplements normal discovery and does not install a background process or override task-specific instructions. [The official skill documentation](https://learn.chatgpt.com/docs/build-skills) explains description-based matching and implicit invocation.
 
 The workflow is:
 

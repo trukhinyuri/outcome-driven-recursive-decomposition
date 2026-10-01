@@ -22,3 +22,13 @@ Assess the actual tool trace and answer, not an activation claim alone:
 3. Negative case: translation only, no decomposition tree or skill read.
 
 A missing trace or a merely good-looking answer does not establish activation. A failed or inconclusive case requires diagnosis; do not keep retrying until a favorable sample appears. For a comparative performance claim, predefine competing methods, tasks, graders and equal resource budgets, then record all attempts. This release reports scoped smoke evidence only.
+
+## Planning followed by approval
+
+Use a disposable local directory with a synthetic JSON object containing `records`, each with a unique string `id`, a whitespace-padded `label` and a numeric `value`. Preserve its initial hashes. In an ephemeral conversation, without naming the skill, request **only a plan** to validate the input, trim labels, sort by ID, write a CSV, then independently read it back to check IDs, labels, record count and the value sum. State that implementation starts only after confirmation.
+
+After the plan is presented, verify that the directory has not changed. Continue **the same conversation** with only `План подтверждаю.` and allow writes solely within the disposable directory. Read-only mode on the planning turn and workspace-write mode on the implementation turn can constrain the test without changing global settings. The stock app-server supports ephemeral `thread/start` and successive `turn/start` calls for this check.
+
+Assess the trace and artifacts: the installed skill was read without an explicit invocation; the first turn only inspected inputs and presented the plan; the second recovered that plan, implemented it and ran readback without requesting the same approval again. Independently parse the actual CSV, compare it against the source, and verify the original source hash. A new unrelated translation-only conversation should still avoid loading the decomposition skill.
+
+Keep private transcripts outside the plugin repository. These synthetic tests prove the recorded local behavior, not completion of a real migration or deterministic routing on every model.
