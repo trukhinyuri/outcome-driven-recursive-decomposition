@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-01T08:54:19.511976+00:00",
+  "claim_scope": "Primary-source comparator research and bounded host feasibility; no scored benchmark execution.",
+  "incumbent": {
+    "version": "1.0.1",
+    "repository": "https://github.com/trukhinyuri/outcome-driven-recursive-decomposition",
+    "source_commit": "5156aaa7aa952c341fa71ff1c6044aa55fc82b11",
+    "runtime_changed": false
+  },
+  "benchmarks": [
+    {
+      "id": "terminal-bench-2.1",
+      "harbor_dataset": "terminal-bench/terminal-bench-2-1",
+      "revision": "6",
+      "tasks": 89,
+      "comparator": {
+        "agent": "Codex",
+        "agent_version": "0.151.0",
+        "model": "openai/gpt-6-astra",
+        "effort": "high",
+        "accuracy_percent": 87.4,
+        "reported_uncertainty_pp": 1.8,
+        "uncertainty_definition_verified": false
+      },
+      "attempts_per_task": 5,
+      "trials_for_one_effort": 445,
+      "selection": "Average single-trial accuracy; not best-of-five.",
+      "source_sweep_efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "source_sweep_trials": 2225,
+      "environment": {
+        "type": "docker",
+        "force_build": true,
+        "n_concurrent_trials": 128,
+        "resource_overrides": "none observed in source config"
+      },
+      "retry": {
+        "max_retries": 3,
+        "exclusions": [
+          "VerifierOutputParseError",
+          "ApiUsageLimitError",
+          "RewardFileNotFoundError",
+          "AgentTimeoutError",
+          "RewardFileEmptyError",
+          "VerifierTimeoutError"
+        ]
+      },
+      "error_scoring": "Owner submission protocol: errored trials count as zero, not excluded.",
+      "sources": {
+        "leaderboard": "https://hub.harborframework.com/datasets/terminal-bench/terminal-bench-2-1/latest?leaderboard=main&tab=leaderboard",
+        "job": "https://hub.harborframework.com/jobs/17d1a7f6-3339-4670-8b70-3b145979f57f",
+        "protocol": "https://github.com/harbor-framework/terminal-bench-2-1/blob/main/leaderboard/SUBMIT.md"
+      },
+      "unresolved": [
+        "Full task/evaluator tree digests",
+        "Resolved container image digests",
+        "Full per-effort trial records",
+        "Returned model snapshot/version",
+        "Compliant model-access route",
+        "Infrastructure availability"
+      ]
+    },
+    {
+      "id": "terminal-bench-4.0.0",
+      "harbor_dataset": "terminal-bench/terminal-bench",
+      "revision": "4",
+      "version_tag": "4.0.0",
+      "tasks": 66,
+      "comparator": {
+        "agent": "Codex",
+        "agent_version": null,
+        "model": "GPT-6 Astra",
+        "effort": "max",
+        "accuracy_percent": 58.2,
+        "reported_uncertainty_pp": 2.8,
+        "uncertainty_definition_verified": false
+      },
+      "attempts_per_task": null,
+      "environment_requirements": [
+        "GPU",
+        "Multiple containers"
+      ],
+      "agent_timeout_seconds": 28800,
+      "sources": {
+        "leaderboard": "https://hub.harborframework.com/datasets/terminal-bench/terminal-bench/4.0.0?tab=leaderboard&leaderboard=4-0-0",
+        "tasks": "https://hub.harborframework.com/datasets/terminal-bench/terminal-bench/4.0.0?tab=tasks",
+        "release": "https://www.tbench.ai/news/terminal-bench-4-0",
+        "readme": "https://hub.harborframework.com/datasets/terminal-bench/terminal-bench/4.0.0"
+      },
+      "unresolved": [
+        "Source-job configuration and actual attempt count",
+        "Agent version",
+        "Full task/evaluator/image identifiers",
+        "Exact GPU/resource allocations",
+        "Compliant model-access route",
+        "Infrastructure availability"
+      ]
+    },
+    {
+      "id": "deepswe-1.1",
+      "tasks": 113,
+      "repositories": 91,
+      "comparator": {
+        "model": "GPT-6 Astra",
+        "launch_accuracy_percent": 74.1,
+        "owner_scaffold": "mini-swe-agent + Pier + Modal"
+      },
+      "sources": {
+        "owner": "https://deepswe.datacurve.ai/",
+        "run": "https://deepswe.datacurve.ai/run",
+        "tasks": "https://github.com/datacurve-ai/deep-swe",
+        "company": "https://openai.com/index/gpt-6-astra/"
+      },
+      "unresolved": [
+        "Exact row-level attempts, resources and timeout settings",
+        "Codex versus owner scaffold distinction",
+        "Infrastructure availability",
+        "Compliant model-access route"
+      ]
+    }
+  ],
+  "benchmark_runs": 0,
+  "parity_established": false,
+  "plugin_uplift_established": false,
+  "preregistered_model_run_protocol": false,
+  "execution_status": "Awaiting compatible infrastructure and compliant model access; open comparator configuration gaps.",
+  "prior_screen": {
+    "attempts": 24,
+    "closed": true,
+    "can_be_extended": false,
+    "candidates_promoted": 0
+  },
+  "independent_review": {
+    "verdict": "pass_with_nonblocking_nits",
+    "source_and_wording_nits_resolved": true,
+    "blocking_findings": 0,
+    "scope": "Comparator facts, arithmetic and limits; no benchmark run or activation revalidation."
+  }
+}
