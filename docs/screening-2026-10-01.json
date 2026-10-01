@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-01",
+  "host": "Codex CLI/Desktop app-server0.159.2",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "release_retained": "1.0.1",
+  "comparative_trials_total_including_exclusions": 24,
+  "valid_comparative_trials": 20,
+  "exclusions": {
+    "infrastructure_invalid": 3,
+    "contaminated_native_control": 1
+  },
+  "candidate_a": {
+    "cases": 6,
+    "incumbent_correct": 6,
+    "candidate_correct": 6,
+    "incumbent_total_tokens": 613331,
+    "candidate_total_tokens": 597563,
+    "adopted": false,
+    "reason": "Exploratory checker equality-alias weakness; small single-run usage change does not establish robust improvement."
+  },
+  "candidate_b": {
+    "cases": 7,
+    "incumbent_correct": 7,
+    "candidate_correct": 7,
+    "incumbent_total_tokens": 731561,
+    "candidate_total_tokens": 871331,
+    "incumbent_input_tokens": 719676,
+    "candidate_input_tokens": 856262,
+    "incumbent_cached_input_tokens": 580480,
+    "candidate_cached_input_tokens": 695936,
+    "incumbent_output_tokens": 11885,
+    "candidate_output_tokens": 15069,
+    "incumbent_elapsed_seconds": 547.377,
+    "candidate_elapsed_seconds": 618.981,
+    "total_token_change_percent": 19.1057,
+    "adopted": false,
+    "reason": "Same correctness; fixed aggregate token gate failed."
+  },
+  "controls": {
+    "existing_checker": 7,
+    "new_boundary_checker": 18,
+    "transfer_oracle_calibration": 14
+  },
+  "general_frontier_parity_established": false,
+  "limits": [
+    "Synthetic development tasks and single runs, not a published frontier benchmark.",
+    "Six incumbent results reused; temporal variance uncontrolled.",
+    "Common global instructions and best-effort catalog filtering; no pristine native comparator.",
+    "Scoring files readable under one OS user: not a protected holdout or syscall audit.",
+    "Cumulative total token counts include cached input; no quota or price savings attribution.",
+    "Observed notification-based token/tool caps can overshoot; latest-context token cap is not an aggregate turn cap.",
+    "Three failed infrastructure trials and one contaminated control retained and excluded transparently.",
+    "Skill-read detector defect repaired uniformly; original task thresholds and records preserved."
+  ]
+}

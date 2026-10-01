@@ -55,7 +55,7 @@ The agent preserves user intent, authorization and resource limits. It checks cu
 
 The package combines a concise skill, progressive references, a deterministic local evidence/state engine, adversarial cases and tests. Its [design basis](skills/outcome-decomposition/references/method.md) includes NASA, DARPA, ADaPT and Reflexion. Those sources support design choices; they do not prove this composition improves every task.
 
-The agent still judges source quality, performs real work and decides whether the goal matters. The state tool verifies recorded graph and evidence invariants, not the truth of model-entered observations. It has no autonomous executor or hidden background activity. No comparative benchmark establishes a world-best claim. The [validation record](docs/validation.md) distinguishes unit tests, host readback and observed model behavior.
+The agent still judges source quality, performs real work and decides whether the goal matters. The state tool verifies recorded graph and evidence invariants, not the truth of model-entered observations. It has no autonomous executor or hidden background activity. No comparative benchmark establishes a world-best claim. The [validation record](docs/validation.md) distinguishes unit tests, host readback and observed model behavior. The [frontier research and candidate screening record](docs/screening-2026-10-01.md) reports two tested candidates, the reasons for retaining 1.0.1 and the remaining comparative limits.
 
 ```sh
 python3 -m unittest discover -s tests -v
