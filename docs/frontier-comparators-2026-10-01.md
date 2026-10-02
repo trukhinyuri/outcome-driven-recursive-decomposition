@@ -1,6 +1,6 @@
 # Frontier comparison: evidence and execution gap
 
-Observed 2026-10-01. This is primary-source research and a feasibility check, **not an executed frontier evaluation**. Installed ODRD remains 1.0.1. Two earlier candidates failed their adoption gate; the completed 24-attempt local screen cannot establish frontier parity.
+Observed 2026-10-01. This is primary-source research and a feasibility check, **not an executed frontier evaluation**. ODRD 1.0.1 was installed at this checkpoint. The [2.0.0 state-tool correction](state-v2-2026-10-02.md) was published the following day; it does not change the historical comparison results or establish frontier parity. Two earlier candidates failed their adoption gate; the completed 24-attempt local screen cannot establish frontier parity.
 
 | Target | Published outcome | Reproduction status |
 | --- | --- | --- |

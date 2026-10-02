@@ -1,9 +1,10 @@
 # Frontier research and candidate screening, 2026-10-01
 
-**Release 1.0.1 remains the installed and published method.** Two experimental
-candidates were evaluated and not adopted. Automatic complex-task planning and
-continuation after human approval remain enabled. No frontier parity or world-best
-claim is established.
+**At the 2026-10-01 checkpoint, release 1.0.1 remained the installed and published method.** Two experimental
+candidates were evaluated and not adopted. The [2.0.0 state-tool correction](state-v2-2026-10-02.md)
+was published on 2026-10-02 with the same skill prompt and invocation policy.
+Automatic complex-task planning and continuation after human approval remain enabled.
+No frontier parity or world-best claim is established.
 
 ## Research hypotheses
 
