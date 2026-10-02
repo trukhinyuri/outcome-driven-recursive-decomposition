@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-02",
+  "version": "2.0.0",
+  "baseline_commit": "b976abbc17133f01c971c9c3d9ac01facb4574a0",
+  "state_engine_sha256": "3ca02b2375368bba8032261d7a7b4af4245feeade523cc249b7f0ef4ae3daf93",
+  "defect": "Replacement aliases were resolved for completion but not for invalidating downstream evidence.",
+  "verification": {
+    "unit_tests_passed": 33,
+    "original_unit_tests_preserved": 23,
+    "original_counterexamples_failed_on_baseline": 3,
+    "original_counterexamples_passed_on_candidate": 3,
+    "independent_acceptance_groups_passed": 8,
+    "malformed_upgrade_variants_rejected": 16,
+    "old_events_and_hashes_preserved": true,
+    "original_requirements_and_controls_preserved": true,
+    "fresh_recovery_after_upgrade_verified": true
+  },
+  "limits": [
+    "Deterministic local state correctness, not truth of observations or model performance.",
+    "No new comparative frontier model benchmark.",
+    "Prompt and automatic invocation policy are unchanged."
+  ]
+}

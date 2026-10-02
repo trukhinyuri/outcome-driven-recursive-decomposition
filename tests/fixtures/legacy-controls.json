@@ -1,0 +1,307 @@
+{
+  "schema": 1,
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-10-02T03:22:43.375851Z",
+      "type": "init",
+      "data": {
+        "id": "root",
+        "parent": null,
+        "kind": "outcome",
+        "outcome": "Preserve migration constraints and controls",
+        "criteria": [
+          "result accepted"
+        ],
+        "constraints": [
+          "preserve original input"
+        ],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "mission acceptance",
+        "risk": 1,
+        "cost": 1,
+        "information": 1
+      },
+      "previous": "",
+      "hash": "559afaa231885b0853fd212b2e0c6a560335cb8a937963dcabf07ad883e8b2a1"
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-02T03:22:43.445630Z",
+      "type": "add",
+      "data": {
+        "id": "unrelated",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "unrelated",
+        "criteria": [
+          "unrelated checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": true,
+        "uncertainty": "unchecked",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 2
+          }
+        }
+      },
+      "previous": "559afaa231885b0853fd212b2e0c6a560335cb8a937963dcabf07ad883e8b2a1",
+      "hash": "0e737d7ff754c078cb0b1531f72d179f0d9803f8d2c391369927a5fb2578e52f"
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-02T03:22:43.515008Z",
+      "type": "add",
+      "data": {
+        "id": "blocked",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "blocked",
+        "criteria": [
+          "blocked checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": true,
+        "uncertainty": "unchecked",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 3
+          }
+        }
+      },
+      "previous": "0e737d7ff754c078cb0b1531f72d179f0d9803f8d2c391369927a5fb2578e52f",
+      "hash": "39bb42c396bf00c188361160d4dcc370c5c4aa4adc498acfd963fa66f8a45935"
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-02T03:22:43.581403Z",
+      "type": "add",
+      "data": {
+        "id": "theory",
+        "parent": "root",
+        "kind": "hypothesis",
+        "outcome": "theory",
+        "criteria": [
+          "theory checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": true,
+        "uncertainty": "unchecked",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 4
+          }
+        }
+      },
+      "previous": "39bb42c396bf00c188361160d4dcc370c5c4aa4adc498acfd963fa66f8a45935",
+      "hash": "8cac63346740a081484aac5b6b9acfade8aa2b9eb750056e47b580d1215435e0"
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-02T03:22:43.648196Z",
+      "type": "evidence",
+      "data": {
+        "node": "unrelated",
+        "id": "e5",
+        "revision": 1,
+        "criterion": "unrelated checked",
+        "source": "urn:fixture:unrelated",
+        "observation": "Fixture check",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 5
+          }
+        }
+      },
+      "previous": "8cac63346740a081484aac5b6b9acfade8aa2b9eb750056e47b580d1215435e0",
+      "hash": "3ced14f1ff773614e00aef1df9ad9b13d73b7593f474faea7e57bf72f7290d34"
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-02T03:22:43.715461Z",
+      "type": "decide",
+      "data": {
+        "node": "unrelated",
+        "action": "complete",
+        "reason": "Fixture decision",
+        "revision": 1
+      },
+      "previous": "3ced14f1ff773614e00aef1df9ad9b13d73b7593f474faea7e57bf72f7290d34",
+      "hash": "9b553e114f853ae720f12e087fcbb7f9e52c130bf0dfb86d6a4daf8084d7aedc"
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-02T03:22:43.784874Z",
+      "type": "evidence",
+      "data": {
+        "node": "blocked",
+        "id": "e7",
+        "revision": 1,
+        "criterion": "blocked checked",
+        "source": "urn:fixture:blocked",
+        "observation": "Fixture check",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 6
+          }
+        }
+      },
+      "previous": "9b553e114f853ae720f12e087fcbb7f9e52c130bf0dfb86d6a4daf8084d7aedc",
+      "hash": "e0dec97e96af56f224bfa5f29feb461b122bb6de0960aba14f640388fe0a3295"
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-02T03:22:43.854368Z",
+      "type": "decide",
+      "data": {
+        "node": "blocked",
+        "action": "block",
+        "reason": "Fixture decision",
+        "revision": 1
+      },
+      "previous": "e0dec97e96af56f224bfa5f29feb461b122bb6de0960aba14f640388fe0a3295",
+      "hash": "ab4448086c66eaea2c7e979f75359d1723ae8cfc00a504e64f02e32097b1bbc2"
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-02T03:22:43.924826Z",
+      "type": "evidence",
+      "data": {
+        "node": "theory",
+        "id": "e9",
+        "revision": 1,
+        "criterion": "theory checked",
+        "source": "urn:fixture:theory",
+        "observation": "Fixture check",
+        "verdict": "contradicts",
+        "updates": {
+          "root": {
+            "outcome": "Preserve migration constraints and controls",
+            "criteria": [
+              "result accepted"
+            ],
+            "constraints": [
+              "preserve original input"
+            ],
+            "depends": [],
+            "revision": 7
+          }
+        }
+      },
+      "previous": "ab4448086c66eaea2c7e979f75359d1723ae8cfc00a504e64f02e32097b1bbc2",
+      "hash": "04749bd2baf27894e211f949805f8b1d3846cf4e9d08785d86aab3cd72abb8ea"
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-02T03:22:43.993719Z",
+      "type": "decide",
+      "data": {
+        "node": "theory",
+        "action": "reject",
+        "reason": "Fixture decision",
+        "revision": 1
+      },
+      "previous": "04749bd2baf27894e211f949805f8b1d3846cf4e9d08785d86aab3cd72abb8ea",
+      "hash": "4542b57aa5031e34a828de9b1b84b5863830bb5939843806511ec89476d72650"
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-02T03:22:44.061799Z",
+      "type": "evidence",
+      "data": {
+        "node": "root",
+        "id": "e11",
+        "revision": 7,
+        "criterion": "result accepted",
+        "source": "urn:fixture:root",
+        "observation": "Fixture check",
+        "verdict": "supports",
+        "updates": {}
+      },
+      "previous": "4542b57aa5031e34a828de9b1b84b5863830bb5939843806511ec89476d72650",
+      "hash": "cecea64e15b4c308356a82be9526763226e95f4cf4f82a7d0b56ed0ac9ccb444"
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-02T03:22:44.130347Z",
+      "type": "decide",
+      "data": {
+        "node": "root",
+        "action": "complete",
+        "reason": "Fixture decision",
+        "revision": 7
+      },
+      "previous": "cecea64e15b4c308356a82be9526763226e95f4cf4f82a7d0b56ed0ac9ccb444",
+      "hash": "83838e1a7ced690f3ff8010782f28273d11773fd52abe5604667af2aca498493"
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-02T03:22:44.199027Z",
+      "type": "decide",
+      "data": {
+        "node": "root",
+        "action": "block",
+        "reason": "Fixture decision",
+        "revision": 7
+      },
+      "previous": "83838e1a7ced690f3ff8010782f28273d11773fd52abe5604667af2aca498493",
+      "hash": "da79c5bdc2a0a71586f0d711ce26423557753782b8c2d9f39a52cee6dbdde05c"
+    }
+  ]
+}

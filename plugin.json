@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "outcome-driven-recursive-decomposition",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Plan complex goals and deliver approved plans through recursive outcome decomposition, discriminating experiments and verified integration.",
   "author": {
     "name": "trukhinyuri",

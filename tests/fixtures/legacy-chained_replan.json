@@ -1,0 +1,628 @@
+{
+  "schema": 1,
+  "events": [
+    {
+      "seq": 1,
+      "at": "2026-10-02T03:19:00.668934Z",
+      "type": "init",
+      "data": {
+        "id": "root",
+        "parent": null,
+        "kind": "outcome",
+        "outcome": "Deliver current verified integration",
+        "criteria": [
+          "root checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "mission acceptance",
+        "risk": 1,
+        "cost": 1,
+        "information": 1
+      },
+      "previous": "",
+      "hash": "34f3023416c5bcfadfced1e2ccc7548d3da86db20a9e2373557f1adee96f6cac"
+    },
+    {
+      "seq": 2,
+      "at": "2026-10-02T03:19:00.741126Z",
+      "type": "add",
+      "data": {
+        "id": "old",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "old",
+        "criteria": [
+          "old checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 2
+          }
+        }
+      },
+      "previous": "34f3023416c5bcfadfced1e2ccc7548d3da86db20a9e2373557f1adee96f6cac",
+      "hash": "9584fd9f4078240da05fce5ae84959df924c95c35365c70425bbebe1cdd1e703"
+    },
+    {
+      "seq": 3,
+      "at": "2026-10-02T03:19:00.811153Z",
+      "type": "add",
+      "data": {
+        "id": "replacement",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "replacement",
+        "criteria": [
+          "replacement checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 3
+          }
+        }
+      },
+      "previous": "9584fd9f4078240da05fce5ae84959df924c95c35365c70425bbebe1cdd1e703",
+      "hash": "cd8c92ba16770f4a4f1850d5f48ed933d0cc14e3154b2a3ab7af54e4a04447ae"
+    },
+    {
+      "seq": 4,
+      "at": "2026-10-02T03:19:00.881766Z",
+      "type": "add",
+      "data": {
+        "id": "newest",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "newest",
+        "criteria": [
+          "newest checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 4
+          }
+        }
+      },
+      "previous": "cd8c92ba16770f4a4f1850d5f48ed933d0cc14e3154b2a3ab7af54e4a04447ae",
+      "hash": "f714057fea70e63a11d73e2f0a9d632d88c3dbda99a65637130684fb8dde09c8"
+    },
+    {
+      "seq": 5,
+      "at": "2026-10-02T03:19:00.951604Z",
+      "type": "add",
+      "data": {
+        "id": "consumer",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "consumer",
+        "criteria": [
+          "consumer checked"
+        ],
+        "constraints": [],
+        "depends": [
+          "old"
+        ],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 5
+          }
+        }
+      },
+      "previous": "f714057fea70e63a11d73e2f0a9d632d88c3dbda99a65637130684fb8dde09c8",
+      "hash": "28afe9480478c5e5f402f30ecb57d16413fd2db3f05e0287f579b1e7ae815282"
+    },
+    {
+      "seq": 6,
+      "at": "2026-10-02T03:19:01.023554Z",
+      "type": "add",
+      "data": {
+        "id": "transitive",
+        "parent": "root",
+        "kind": "outcome",
+        "outcome": "transitive",
+        "criteria": [
+          "transitive checked"
+        ],
+        "constraints": [],
+        "depends": [
+          "consumer"
+        ],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 6
+          }
+        }
+      },
+      "previous": "28afe9480478c5e5f402f30ecb57d16413fd2db3f05e0287f579b1e7ae815282",
+      "hash": "3002209c2a01a36f3bd0529ece548f5614e5570b8a87f360be1c7d6b0883caf5"
+    },
+    {
+      "seq": 7,
+      "at": "2026-10-02T03:19:01.095281Z",
+      "type": "add",
+      "data": {
+        "id": "consumer_child",
+        "parent": "consumer",
+        "kind": "outcome",
+        "outcome": "consumer_child",
+        "criteria": [
+          "consumer_child checked"
+        ],
+        "constraints": [],
+        "depends": [],
+        "optional": false,
+        "uncertainty": "Requires direct check",
+        "risk": 2,
+        "cost": 1.0,
+        "information": 2,
+        "updates": {
+          "consumer": {
+            "outcome": "consumer",
+            "criteria": [
+              "consumer checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "old"
+            ],
+            "revision": 2
+          },
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 7
+          },
+          "transitive": {
+            "outcome": "transitive",
+            "criteria": [
+              "transitive checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "consumer"
+            ],
+            "revision": 2
+          }
+        }
+      },
+      "previous": "3002209c2a01a36f3bd0529ece548f5614e5570b8a87f360be1c7d6b0883caf5",
+      "hash": "baac013832308fb6d5309a3bc2ccb4fdf376c22e3088702a1cdc5efb9ab2458c"
+    },
+    {
+      "seq": 8,
+      "at": "2026-10-02T03:19:01.167530Z",
+      "type": "replan",
+      "data": {
+        "node": "old",
+        "replacement": "replacement",
+        "reason": "Replace fixture approach",
+        "updates": {
+          "consumer": {
+            "outcome": "consumer",
+            "criteria": [
+              "consumer checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "old"
+            ],
+            "revision": 3
+          },
+          "consumer_child": {
+            "outcome": "consumer_child",
+            "criteria": [
+              "consumer_child checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 2
+          },
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 8
+          },
+          "transitive": {
+            "outcome": "transitive",
+            "criteria": [
+              "transitive checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "consumer"
+            ],
+            "revision": 3
+          }
+        }
+      },
+      "previous": "baac013832308fb6d5309a3bc2ccb4fdf376c22e3088702a1cdc5efb9ab2458c",
+      "hash": "7e3ac00d9add49e4d9f8d150c1480d0a52f8448f8c57c403dc4486cbea9bf9cb"
+    },
+    {
+      "seq": 9,
+      "at": "2026-10-02T03:19:01.242864Z",
+      "type": "evidence",
+      "data": {
+        "node": "replacement",
+        "id": "e9",
+        "revision": 1,
+        "criterion": "replacement checked",
+        "source": "urn:repro:replacement",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 9
+          }
+        }
+      },
+      "previous": "7e3ac00d9add49e4d9f8d150c1480d0a52f8448f8c57c403dc4486cbea9bf9cb",
+      "hash": "817996485959196a48c240b6dd921732284bae5b837b53a6d903ac887462c9b2"
+    },
+    {
+      "seq": 10,
+      "at": "2026-10-02T03:19:01.315246Z",
+      "type": "decide",
+      "data": {
+        "node": "replacement",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 1
+      },
+      "previous": "817996485959196a48c240b6dd921732284bae5b837b53a6d903ac887462c9b2",
+      "hash": "1043f6ff83e9095edc8246d532548c1835527f3c44d843185cd6d44575f611e7"
+    },
+    {
+      "seq": 11,
+      "at": "2026-10-02T03:19:01.390049Z",
+      "type": "evidence",
+      "data": {
+        "node": "newest",
+        "id": "e11",
+        "revision": 1,
+        "criterion": "newest checked",
+        "source": "urn:repro:newest",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 10
+          }
+        }
+      },
+      "previous": "1043f6ff83e9095edc8246d532548c1835527f3c44d843185cd6d44575f611e7",
+      "hash": "27b44fdbe73bd8bc7d8a5c37e020fef93c784856e70f666f8fab48bdd7bf4997"
+    },
+    {
+      "seq": 12,
+      "at": "2026-10-02T03:19:01.467076Z",
+      "type": "decide",
+      "data": {
+        "node": "newest",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 1
+      },
+      "previous": "27b44fdbe73bd8bc7d8a5c37e020fef93c784856e70f666f8fab48bdd7bf4997",
+      "hash": "25ccccc41e76f87592fbdf68c2a0a44e8951919665667765e7b8784296dec51b"
+    },
+    {
+      "seq": 13,
+      "at": "2026-10-02T03:19:01.542077Z",
+      "type": "evidence",
+      "data": {
+        "node": "consumer_child",
+        "id": "e13",
+        "revision": 2,
+        "criterion": "consumer_child checked",
+        "source": "urn:repro:consumer_child",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {
+          "consumer": {
+            "outcome": "consumer",
+            "criteria": [
+              "consumer checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "old"
+            ],
+            "revision": 4
+          },
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 11
+          },
+          "transitive": {
+            "outcome": "transitive",
+            "criteria": [
+              "transitive checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "consumer"
+            ],
+            "revision": 4
+          }
+        }
+      },
+      "previous": "25ccccc41e76f87592fbdf68c2a0a44e8951919665667765e7b8784296dec51b",
+      "hash": "4eed99fcbf937e8714fb902a3559c6d6157a304f31008c0280551fe154de2334"
+    },
+    {
+      "seq": 14,
+      "at": "2026-10-02T03:19:01.613716Z",
+      "type": "decide",
+      "data": {
+        "node": "consumer_child",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 2
+      },
+      "previous": "4eed99fcbf937e8714fb902a3559c6d6157a304f31008c0280551fe154de2334",
+      "hash": "7ac45a01cc5231116d2d98375f48b6f8a149f934f41b88b4f869be29c42779a3"
+    },
+    {
+      "seq": 15,
+      "at": "2026-10-02T03:19:01.686818Z",
+      "type": "evidence",
+      "data": {
+        "node": "consumer",
+        "id": "e15",
+        "revision": 4,
+        "criterion": "consumer checked",
+        "source": "urn:repro:consumer",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 12
+          },
+          "transitive": {
+            "outcome": "transitive",
+            "criteria": [
+              "transitive checked"
+            ],
+            "constraints": [],
+            "depends": [
+              "consumer"
+            ],
+            "revision": 5
+          }
+        }
+      },
+      "previous": "7ac45a01cc5231116d2d98375f48b6f8a149f934f41b88b4f869be29c42779a3",
+      "hash": "5daec2cf60214bcdf5cfa004d6763e0dde54eed131e0ce6a609f5e2e2feb9618"
+    },
+    {
+      "seq": 16,
+      "at": "2026-10-02T03:19:01.755123Z",
+      "type": "decide",
+      "data": {
+        "node": "consumer",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 4
+      },
+      "previous": "5daec2cf60214bcdf5cfa004d6763e0dde54eed131e0ce6a609f5e2e2feb9618",
+      "hash": "fca682a13c789e3c5489630c575e0227711b816b93faf245728b59ec1ec0afc7"
+    },
+    {
+      "seq": 17,
+      "at": "2026-10-02T03:19:01.826279Z",
+      "type": "evidence",
+      "data": {
+        "node": "transitive",
+        "id": "e17",
+        "revision": 5,
+        "criterion": "transitive checked",
+        "source": "urn:repro:transitive",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 13
+          }
+        }
+      },
+      "previous": "fca682a13c789e3c5489630c575e0227711b816b93faf245728b59ec1ec0afc7",
+      "hash": "c8f4e916840b124b824d3ebc69e89cecdbbc0aaf3bf064807957faf46eff219d"
+    },
+    {
+      "seq": 18,
+      "at": "2026-10-02T03:19:01.898097Z",
+      "type": "decide",
+      "data": {
+        "node": "transitive",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 5
+      },
+      "previous": "c8f4e916840b124b824d3ebc69e89cecdbbc0aaf3bf064807957faf46eff219d",
+      "hash": "e65b8c304b9ed3db7a8e6c7d42f09c6b6d2d91400d903464cc62726a05eaa74d"
+    },
+    {
+      "seq": 19,
+      "at": "2026-10-02T03:19:01.973623Z",
+      "type": "evidence",
+      "data": {
+        "node": "root",
+        "id": "e19",
+        "revision": 13,
+        "criterion": "root checked",
+        "source": "urn:repro:root",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {}
+      },
+      "previous": "e65b8c304b9ed3db7a8e6c7d42f09c6b6d2d91400d903464cc62726a05eaa74d",
+      "hash": "7b3985f51560db5695384dbdcccfc155a69212144c87ea4b2546555515c81b4e"
+    },
+    {
+      "seq": 20,
+      "at": "2026-10-02T03:19:02.049568Z",
+      "type": "decide",
+      "data": {
+        "node": "root",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 13
+      },
+      "previous": "7b3985f51560db5695384dbdcccfc155a69212144c87ea4b2546555515c81b4e",
+      "hash": "cbbc7561aa690b3671ec60af9e723723eca7b87a522a3834063254aae4c19b85"
+    },
+    {
+      "seq": 21,
+      "at": "2026-10-02T03:19:02.200825Z",
+      "type": "replan",
+      "data": {
+        "node": "replacement",
+        "replacement": "newest",
+        "reason": "Replace fixture approach",
+        "updates": {
+          "root": {
+            "outcome": "Deliver current verified integration",
+            "criteria": [
+              "root checked"
+            ],
+            "constraints": [],
+            "depends": [],
+            "revision": 14
+          }
+        }
+      },
+      "previous": "cbbc7561aa690b3671ec60af9e723723eca7b87a522a3834063254aae4c19b85",
+      "hash": "c19e393f1daf60b5a9992b193102b253869760a63bdff227d14d5bbdcb64e002"
+    },
+    {
+      "seq": 22,
+      "at": "2026-10-02T03:19:02.418055Z",
+      "type": "evidence",
+      "data": {
+        "node": "root",
+        "id": "e22",
+        "revision": 14,
+        "criterion": "root checked",
+        "source": "urn:repro:root",
+        "observation": "Deterministic reproduction fixture observation",
+        "verdict": "supports",
+        "updates": {}
+      },
+      "previous": "c19e393f1daf60b5a9992b193102b253869760a63bdff227d14d5bbdcb64e002",
+      "hash": "3cebd45e4983f38d4cae95103cda0a4e68fba23cdca3dbda28a4c2a83ab52357"
+    },
+    {
+      "seq": 23,
+      "at": "2026-10-02T03:19:02.491422Z",
+      "type": "decide",
+      "data": {
+        "node": "root",
+        "action": "complete",
+        "reason": "Fixture acceptance checked",
+        "revision": 14
+      },
+      "previous": "3cebd45e4983f38d4cae95103cda0a4e68fba23cdca3dbda28a4c2a83ab52357",
+      "hash": "7fbc2f707a6d0ec9039aab800067224d849b0a19d4b5726bfbc842d6dd8dbeae"
+    }
+  ]
+}

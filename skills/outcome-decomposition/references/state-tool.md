@@ -80,3 +80,22 @@ python3 "$ODRD_TOOL" validate /absolute/project/.odrd/mission.json
 The event log is hash chained and atomically replaced under a cooperative local lock. It detects ordinary corruption; an author who rewrites all hashes can forge records, so it is not a security boundary or distributed consensus. `validate` checks replay, graph integrity and captured artifacts, not mission success. Exit 0 means valid records; exit 1 means artifact verification failed; exit 2 means an invalid request/state or I/O error. Read-only `status` may exit 0 while reporting an incomplete mission or artifact gaps.
 
 If interrupted while holding a lock, inspect the lock's recorded PID and the live process before removing a demonstrably stale lock. Do not delete a lock merely because an observation timed out. Private task state is yours; plugin removal leaves it in place.
+
+## Upgrade version 1 journals
+
+New journals use schema 2. Their initial event includes the schema version in its hash. The completion and invalidation rules both follow the current replacement of each dependency, including chains of replacements.
+
+Older schema 1 journals remain readable through `status`, `next` and `validate`. Until an explicit upgrade, they report `upgrade_required: true` and `mission_verified: false`; ordinary writes are refused. An intact historical journal may still pass `validate`: that command checks record integrity, not completion. This prevents a completion recorded under the earlier invalidation rules from being mistaken for current proof.
+
+Keep a copy if you need to reopen the journal with version 1 of the tool. Then upgrade the chosen journal explicitly:
+
+```sh
+cp /absolute/project/.odrd/mission.json /absolute/project/.odrd/mission.v1.json
+python3 "$ODRD_TOOL" upgrade /absolute/project/.odrd/mission.json \
+  --reason 'Use replacement-aware verification rules and recheck the active outcomes'
+python3 "$ODRD_TOOL" status /absolute/project/.odrd/mission.json
+```
+
+The upgrade appends one hash-chained event. Earlier events and hashes, the original objective and requirements, and explicit `block`/`reject` decisions are preserved. Proof revisions of all active nodes are invalidated conservatively. Repeat the relevant real-world checks and record fresh evidence from prerequisites and children through the parent integration check; the upgrade itself is not evidence of completion.
+
+For an upgraded journal, `initial_schema` remains 1 and `current_schema` becomes 2. The original header continues to identify how its historical prefix must be replayed. Do not change that header or rehash old events to simulate an upgrade. A new schema 2 journal needs no upgrade, and a repeated upgrade is rejected without modifying the file. The old tool cannot read the appended upgrade event; use the preserved pre-upgrade copy if rollback is necessary.

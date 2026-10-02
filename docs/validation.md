@@ -16,7 +16,7 @@ Verified on 2026-10-01 (Europe/Amsterdam). The tested host was Codex Desktop/app
 
 All three live smoke turns explicitly selected `gpt-6.1-sol` with `model_reasoning_effort="medium"` through supported CLI options. The host model catalog confirmed this selection was supported before launch. The global model/defaults were not changed. No extra user chats or background automation were created.
 
-Final state engine SHA-256:
+Initial 1.0.0 / 1.0.1 state engine SHA-256:
 
 ```text
 13e732a0b18615cb5df7bb22adcfc3523308b1b31a957f63de6c15d20befe720
@@ -35,6 +35,10 @@ The installed 1.0.1 skill was tested through stock app-server in an ephemeral co
 An independent semantic reviewer also exercised plan-only, full approval, partial approval and direct implementation requests and found no material contradiction. Partial approval was reviewed semantically, not tested against a live deployment. The optional state engine was unchanged from 1.0.0; its recorded 23 unit tests and nine independent probes are not represented as a new behavioral routing test.
 
 Native forced discovery confirmed the plugin installed and enabled at local version 1.0.1, and the namespaced skill enabled. The reviewed routing files matched the installed cache. Planning/approval test instructions are in [live-smoke.md](../evals/live-smoke.md). These observations do not guarantee deterministic selection on every future prompt, and existing turns still require current instructions or refreshed discovery.
+
+## 2.0.0 state replay and replacement correction
+
+The [version 2 verification record](state-v2-2026-10-02.md) documents a replacement-invalidation defect found after the initial release, its repair, backward-readable history and explicit migration. The current state suite has 33 tests. The initial 23-test result above is historical and did not cover the newly identified counterexamples.
 
 ## Reproduce and assess limits
 

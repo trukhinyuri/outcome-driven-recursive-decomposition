@@ -51,6 +51,10 @@ Original outcome and acceptance
 
 The agent preserves user intent, authorization and resource limits. It checks current state on resume and does not equate children completed with the root done. See [the skill](skills/outcome-decomposition/SKILL.md) and [the optional local state tool](skills/outcome-decomposition/references/state-tool.md).
 
+## Version 2 task journals
+
+Version 2 fixes a stale-evidence defect after replacing an outcome branch. Changes to the replacement now invalidate the dependent outcomes, their children and downstream consumers. Existing version 1 journals remain readable, but require an explicit `upgrade` and fresh verification before they can report a completed mission. The upgrade preserves the historical events and hashes; it does not approve or execute external work. See the [migration guide](skills/outcome-decomposition/references/state-tool.md#upgrade-version-1-journals) and [verification record](docs/state-v2-2026-10-02.md).
+
 ## Quality and limitations
 
 The package combines a concise skill, progressive references, a deterministic local evidence/state engine, adversarial cases and tests. Its [design basis](skills/outcome-decomposition/references/method.md) includes NASA, DARPA, ADaPT and Reflexion. Those sources support design choices; they do not prove this composition improves every task.

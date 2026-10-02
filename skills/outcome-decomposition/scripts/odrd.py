@@ -21,6 +21,8 @@ from urllib.parse import urlparse
 KINDS = {"outcome", "hypothesis", "experiment", "deliverable"}
 ACTIONS = {"retain", "reject", "block", "complete"}
 VERDICTS = {"supports", "contradicts", "inconclusive"}
+CURRENT_SCHEMA = 2
+UPGRADE_REQUIRED = "legacy journal requires explicit upgrade and fresh verification; run upgrade STATE --reason TEXT"
 
 
 class Invalid(ValueError):
@@ -154,8 +156,13 @@ def dependencies(node):
 
 class Ledger:
     def __init__(self, document):
-        require(isinstance(document, dict) and document.get("schema") == 1, "unsupported state schema")
+        require(isinstance(document, dict) and type(document.get("schema")) is int
+                and document["schema"] in {1, CURRENT_SCHEMA}, "unsupported state schema")
         self.document = document
+        # The header is the starting replay version. An append-only upgrade event
+        # changes the rules for subsequent events without rewriting old hashes.
+        self.current_schema = document["schema"]
+        self._replaying = True
         self.nodes, self.evidence, self.decisions, self.resolutions, self.plans = {}, [], [], [], []
         self.controls = {}  # Explicit block/reject survives automatic proof invalidation.
         events = document.get("events")
@@ -172,6 +179,11 @@ class Ledger:
             self.apply(event["type"], event["data"], index, stamp)
             previous = event["hash"]
         self.check_graph()
+        self._replaying = False
+
+    @property
+    def upgrade_required(self):
+        return self.current_schema < CURRENT_SCHEMA
 
     def node(self, key):
         require(key in self.nodes, f"unknown node: {key}")
@@ -227,6 +239,8 @@ class Ledger:
 
     def proof_reasons(self, key, check_artifacts=True):
         reasons, fresh = [], self.fresh(key)
+        if self.upgrade_required and not self._replaying:
+            reasons.append(UPGRADE_REQUIRED)
         for criterion in current(self.node(key))["criteria"]:
             relevant = [e for e in fresh if e["criterion"] == criterion]
             if not any(e["verdict"] == "supports" and (not check_artifacts or not self.artifact_error(e)) for e in relevant):
@@ -252,6 +266,8 @@ class Ledger:
         return reasons
 
     def verified(self, key, trail=(), check_artifacts=True):
+        if self.upgrade_required and not self._replaying:
+            return False
         if not self.active(key) or self.controlled(key):
             return False
         decision = self.decision(key)
@@ -279,8 +295,13 @@ class Ledger:
         while changed:
             changed = False
             for node in self.nodes.values():
+                # Version 1 is retained only to validate historical events.
+                # Current mutations must follow the same gates as completion.
+                prerequisites = dependencies(node)
+                if self.current_schema >= 2:
+                    prerequisites = [self.gate(dependency) for dependency in prerequisites]
                 if node["id"] not in semantic and (node["parent"] in semantic or
-                        (semantic | integration).intersection(dependencies(node))):
+                        (semantic | integration).intersection(prerequisites)):
                     semantic.add(node["id"])
                     changed = True
             for affected in list(semantic | integration):
@@ -341,6 +362,9 @@ class Ledger:
             score(data["cost"], "cost")
             require(math.isfinite(data["risk"] * data["information"] / data["cost"]), "cost produces a nonfinite priority")
             if kind == "init":
+                version = data.get("schema_version", 1)
+                require(type(version) is int and version == self.document["schema"],
+                        "initial schema marker does not match header")
                 require(seq == 1 and key == "root" and data["parent"] is None and not dependencies
                         and data["kind"] == "outcome" and not data["optional"], "invalid mission initialization")
                 self.original_objective, self.original_criteria = outcome, list(criteria)
@@ -434,15 +458,24 @@ class Ledger:
             self.invalidate(data["updates"], set(self.affected(old["id"])) - {old["id"]}, stamp, data["reason"])
             self.plans.append(dict(data, at=stamp))
             self.check_graph()
+        elif kind == "upgrade":
+            require(self.current_schema == 1 and type(data["to_schema"]) is int
+                    and data["to_schema"] == CURRENT_SCHEMA,
+                    "upgrade requires a version 1 journal and target version 2")
+            clean(data["reason"], "upgrade reason")
+            self.invalidate(data["updates"], {key for key in self.nodes if self.active(key)},
+                            stamp, f"schema upgrade: {data['reason']}")
+            self.current_schema = CURRENT_SCHEMA
         else:
             raise Invalid(f"unknown event type: {kind}")
 
     def append(self, kind, data):
+        require(not self.upgrade_required or kind == "upgrade", UPGRADE_REQUIRED)
         events = self.document["events"]
         event = {"seq": len(events) + 1, "at": utc(), "type": kind, "data": data,
                  "previous": events[-1]["hash"] if events else ""}
         event["hash"] = hashlib.sha256(encoded(event)).hexdigest()
-        candidate = {"schema": 1, "events": events + [event]}
+        candidate = {"schema": self.document["schema"], "events": events + [event]}
         require(len(encoded(candidate)) <= 20_000_000, "state would exceed the 20 MB limit")
         Ledger(candidate)
         return candidate
@@ -460,6 +493,8 @@ def blockers(ledger, key):
     reasons = []
     if not ledger.active(key):
         return ["superseded branch"]
+    if ledger.upgrade_required:
+        reasons.append(UPGRADE_REQUIRED)
     parent = node["parent"]
     while parent:
         decision = ledger.decision(parent)
@@ -492,7 +527,9 @@ def report(ledger, command):
         rows.append(row)
     errors = [error for e in ledger.evidence if (error := ledger.artifact_error(e))]
     result = {"original_objective": ledger.original_objective, "mission_verified": ledger.verified("root"),
-              "events": len(ledger.document["events"]), "nodes": rows, "artifact_errors": errors}
+              "events": len(ledger.document["events"]), "nodes": rows, "artifact_errors": errors,
+              "initial_schema": ledger.document["schema"], "current_schema": ledger.current_schema,
+              "upgrade_required": ledger.upgrade_required}
     if command == "next":
         eligible = [r for r in rows if not r["blocked_by"] and r["status"] not in {"complete", "retained", "superseded"}]
         # Work on children before closing their parent; parent own proof still matters.
@@ -506,7 +543,7 @@ def report(ledger, command):
 def parser():
     cli = argparse.ArgumentParser(description=__doc__)
     sub = cli.add_subparsers(dest="command", required=True)
-    for command in ("init", "add", "evidence", "decide", "resolve", "revise", "replan", "status", "next", "validate"):
+    for command in ("init", "add", "evidence", "decide", "resolve", "revise", "replan", "upgrade", "status", "next", "validate"):
         p = sub.add_parser(command)
         p.add_argument("state")
         p.add_argument("--summary", action="store_true", help="human-readable output; default is JSON")
@@ -539,7 +576,7 @@ def parser():
             p.add_argument("--observation", required=True)
             p.add_argument("--verdict", choices=sorted(VERDICTS), required=True)
             p.add_argument("--artifact")
-        if command in {"decide", "resolve", "revise", "replan"}:
+        if command in {"decide", "resolve", "revise", "replan", "upgrade"}:
             p.add_argument("--reason", required=True)
         if command == "decide":
             p.add_argument("--action", choices=sorted(ACTIONS), required=True)
@@ -566,14 +603,19 @@ def main(argv=None):
                     require(not path.exists(), "state already exists; init never overwrites")
                     data = {"id": "root", "parent": None, "kind": "outcome", "outcome": args.goal,
                             "criteria": args.criterion, "constraints": args.constraint, "depends": [],
-                            "optional": False, "uncertainty": "mission acceptance", "risk": 1, "cost": 1, "information": 1}
+                            "optional": False, "uncertainty": "mission acceptance", "risk": 1, "cost": 1, "information": 1,
+                            "schema_version": CURRENT_SCHEMA}
                     event = {"seq": 1, "at": utc(), "type": "init", "data": data, "previous": ""}
                     event["hash"] = hashlib.sha256(encoded(event)).hexdigest()
-                    candidate = {"schema": 1, "events": [event]}
+                    candidate = {"schema": CURRENT_SCHEMA, "events": [event]}
                 else:
                     ledger = load(path)
+                    require(not ledger.upgrade_required or args.command == "upgrade", UPGRADE_REQUIRED)
                     data = {"node": args.node} if hasattr(args, "node") else {}
-                    if args.command == "add":
+                    if args.command == "upgrade":
+                        data = {"to_schema": CURRENT_SCHEMA, "reason": args.reason,
+                                "updates": ledger.updates(key for key in ledger.nodes if ledger.active(key))}
+                    elif args.command == "add":
                         data = {"id": args.id, "parent": args.parent, "kind": args.kind, "outcome": args.outcome,
                                 "criteria": args.criterion, "constraints": args.constraint, "depends": args.depends,
                                 "optional": args.optional, "uncertainty": args.uncertainty, "risk": args.risk,

@@ -1,6 +1,8 @@
 # Opt-in live smoke evaluation
 
-These tests consume model quota. The released implementation was tested with Codex 0.159.2 and GPT-6.1 Sol/Medium, using three ephemeral read-only turns. Use a supported model and the user's budget/settings on your host; do not treat those names as a permanent recommendation.
+These tests consume model quota. The initial 1.0.0 / 1.0.1 skill behavior was tested with Codex 0.159.2 and GPT-6.1 Sol/Medium, using three ephemeral read-only turns. Use a supported model and the user's budget/settings on your host; do not treat those names as a permanent recommendation.
+
+State-tool 2.0.0 verification is documented separately in [the state journal record](../docs/state-v2-2026-10-02.md); the prompt and invocation policy are unchanged.
 
 Install the plugin first. Run from the repository root, keeping full JSONL transcripts in a private scratch directory. The published inputs below are synthetic; they contain no real customer records. The internal root-stage budget note used during author validation is omitted from these reusable task prompts.
 
